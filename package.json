@@ -1,0 +1,15 @@
+{
+  "name": "github-ext-core",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel --presets es2015 -d lib/ src/"
+  },
+  "author": "Hiroki Sato",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13"
+  }
+}
