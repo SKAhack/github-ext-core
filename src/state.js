@@ -1,11 +1,13 @@
 import Repository from './pages/repository';
 import PullRequest from './pages/pull-request';
 import Issue from './pages/issue';
+import CreatePullRequest from './pages/create-pull-request';
 
 const pages = [
   Repository,
   PullRequest,
-  Issue
+  Issue,
+  CreatePullRequest
 ];
 
 class State {
