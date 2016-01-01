@@ -1,9 +1,12 @@
 import $ from 'jQuery';
+import Page from './page';
 
 const pathRegex = /^[\/]([^\/]*?)\/([^\/]*?)\/pull\/(\d+)$/;
 
-class PullRequest {
+class PullRequest extends Page {
   constructor() {
+    super();
+
     const path = window.location.pathname;
     const matches = pathRegex.exec(path);
 
@@ -15,6 +18,10 @@ class PullRequest {
       repo: matches[2],
       number: matches[3]
     };
+  }
+
+  get isRepository() {
+    return true;
   }
 
   get name() {

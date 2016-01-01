@@ -1,9 +1,12 @@
 import $ from 'jQuery';
+import Page from './page';
 
 const pathRegex = /^[\/]([^\/]*?)\/([^\/]*?)\/issues\/(\d+)$/;
 
-class Issue {
+class Issue extends Page {
   constructor() {
+    super();
+
     const path = window.location.pathname;
     const matches = pathRegex.exec(path);
 
@@ -15,6 +18,10 @@ class Issue {
       repo: matches[2],
       number: matches[3]
     };
+  }
+
+  get isRepository() {
+    return true;
   }
 
   get name() {

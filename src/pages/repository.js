@@ -1,7 +1,11 @@
+import Page from './page';
+
 const pathRegex = /^[\/]([^\/]*?)\/([^\/]*)$/;
 
-class Repository {
+class Repository extends Page {
   constructor() {
+    super();
+
     const path = window.location.pathname;
     const matches = pathRegex.exec(path);
 
@@ -11,8 +15,20 @@ class Repository {
     };
   }
 
+  get isRepository() {
+    return true;
+  }
+
   get name() {
     return 'Repository';
+  }
+
+  get orgName() {
+    return this.pageObj.org;
+  }
+
+  get repoName() {
+    return this.pageObj.repo;
   }
 }
 
