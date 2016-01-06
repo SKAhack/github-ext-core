@@ -1,3 +1,4 @@
+import $ from 'jQuery';
 import injection from 'github-injection';
 import State from './state';
 import Plugin from './plugin';
@@ -23,14 +24,16 @@ const fetchSetting = (url, callback) => {
     return;
   }
 
-  fetch(url, { method: 'GET' })
-  .then(checkStatus)
-  .then(res => res.json())
-  .then(json => {
-    jsonCache[cacheKey] = json;
-    callback(jsonCache[cacheKey]);
+  $.ajax(url, { method: 'GET', cache: false })
+  .done(function(json){
+    try {
+      jsonCache[cacheKey] = JSON.parse(json);
+      callback(jsonCache[cacheKey]);
+    } catch(e) {
+      callback({});
+    }
   })
-  .catch(e => {
+  .fail(function(){
     callback({});
   });
 };
