@@ -4,7 +4,7 @@ import Plugin from './plugin';
 
 const state = new State();
 const jsonCache = {};
-const root = 'https://raw.githubusercontent.com';
+const root = 'https://github.com';
 
 const checkStatus = (res) => {
   if (res.status >= 200 && res.status < 300) {
@@ -48,7 +48,7 @@ const init = (window, plugins, setting) => {
 
     if (state.page && state.page.isRepository) {
       const page = state.page;
-      const settingUrl = `${root}/${page.orgName}/${page.repoName}/HEAD/.githubext`;
+      const settingUrl = `${root}/${page.orgName}/${page.repoName}/raw/HEAD/.githubext`;
 
       fetchSetting(settingUrl, (repoSetting) => {
         const newSetting = Object.assign(setting, repoSetting);
